@@ -1,0 +1,101 @@
+/**
+ * Configurator Shortcodes.
+ *
+ * @package  wp-configurator-pro/
+ * @since  2.0
+ * @version  3.0
+ */
+ 
+ /**
+ * Configurator Skin
+ *
+ * @param  [id] Configurator ID.
+ * @param  [style] { accordion } Select the Configurator Style.
+ * @param  [dot_style] { dots | tabs } Choose carousel pagination style.
+ * @param  [dot_position] { bottom | top } Choose carousel pagination position.
+ * @param  [price_details] { true | false } Do you want to show item prices in summary?
+ * @param  [group_price] { true | false } Do you want to show group prices in summary?
+ * @param  [total_price] { true | false } Do you want to show total price?
+ * @param  [form] { quote-form } Choose the form( Default: quote-form ).
+ * @param  [view_summary_btn_text] View Summary Button Text( Default: View Summary ).
+ * @param  [summary_title] Summary Title( Default: Build Summary ).
+ * @param  [form_title] Form Title( Default: Get a Quote ).
+ * @param  [btn_text] Button Text( Default: Get a Quote ).
+ * @param  [submit_btn_text] Submit Button Text( Default: Submit ).
+ * @param  [name_placeholder] Name input field placeholder( Default: Enter your name ).
+ * @param  [email_placeholder] Email input field placeholder( Default: Enter email address ).
+ * @param  [phone_placeholder] Phone input field placeholder( Default: Enter phone number ).
+ * @param  [message_placeholder] Message input field placeholder( Default: Type your message ).
+ * @param  [country_placeholder] Country input field placeholder( Default: Country/Region ).
+ * @param  [address_placeholder] Address input field placeholder( Default: Street Address ).
+ * @param  [city_placeholder] City input field placeholder( Default: Town/City ).
+ * @param  [state_placeholder] State input field placeholder( Default: State ).
+ * @param  [zip_placeholder] Postal Code input field placeholder( Default: Postal Code ).
+ * @param  [gdpr_label] GDPR label( Default: By using this form you agree with the terms and conditions of this website. ).
+ * @param  [extra_class] Additional class for the element wrapper.
+
+[wpc_config id="" dynamic="false" style="accordion" dot_style="dots" dot_position="bottom" price_details="true" group_price="true" total_price="true" form="quote-form" view_summary_btn_text="View Summary" summary_title="Build Summary" form_title="Get a Quote" btn_text="Get a Quote" submit_btn_text="Submit" name_placeholder="Enter your name" email_placeholder="Enter email address" phone_placeholder="Enter phone number" message_placeholder="Type your message" country_placeholder="Country/Region" address_placeholder="Street Address" city_placeholder="Town/City" state_placeholder="State" zip_placeholder="Postal Code" gdpr_label="By using this form you agree with the terms and conditions of this website." extra_class=""]
+
+
+/**
+ * Configurator Preview
+ *
+ * If it has multiple view it act as a slider/carousel
+ *
+ * @param  [int] {id} Configurator ID.
+ * @param  [dot_style] { dots | tabs } Choose carousel pagination style.
+ * @param  [dot_position] { bottom | top } Choose carousel pagination position.
+ * @param  [extra_class] Additional class for the element wrapper.
+ */
+
+[wpc_config_preview id="" dynamic="false" dot_style="dots" dot_position="bottom" extra_class=""]
+
+
+/**
+ * Configurator Accordion Controls
+ *
+ * @param  [id] Configurator ID.
+ * @param  [style] { accordion | accordion-2 } Select the Configurator Style.
+ * @param  [price_details] { true | false } Do you want to show item prices in summary?
+ * @param  [extra_class] Additional class for the element wrapper.
+ */
+
+[wpc_config_accordion_control id="" dynamic="false" style="" price_details="true" extra_class=""]
+
+
+/**
+ * Configurator Quote Form
+ *
+ * @param  [id] Configurator ID.
+ * @param  [summary_title] Summary Title( Default: Build Summary ).
+ * @param  [form_title] Form Title( Default: Get a Quote ).
+ * @param  [btn_text] Button Text( Default: Get a Quote ).
+ * @param  [submit_btn_text] Submit Button Text( Default: Submit ).
+ * @param  [name_placeholder] Name input field placeholder( Default: Enter your name ).
+ * @param  [email_placeholder] Email input field placeholder( Default: Enter email address ).
+ * @param  [phone_placeholder] Phone input field placeholder( Default: Enter phone number ).
+ * @param  [message_placeholder] Message input field placeholder( Default: Type your message ).
+ * @param  [price_details] { true | false } Do you want to show item prices in summary?
+ * @param  [country_placeholder] Country input field placeholder( Default: Country/Region ).
+ * @param  [address_placeholder] Address input field placeholder( Default: Street Address ).
+ * @param  [city_placeholder] City input field placeholder( Default: Town/City ).
+ * @param  [state_placeholder] State input field placeholder( Default: State ).
+ * @param  [zip_placeholder] Postal Code input field placeholder( Default: Postal Code ).
+ * @param  [gdpr_label] GDPR label( Default: By using this form you agree with the terms and conditions of this website. ).
+ * @param  [group_price] { true | false } Do you want to show group prices in summary?
+ * @param  [total_price] { true | false } Do you want to show total price?
+ * @param  [extra_class] Additional class for the element wrapper.
+ */
+
+[wpc_config_quote_form id="" dynamic="false" summary_title="Build Summary" form_title="Get a Quote" btn_text="Get a Quote" submit_btn_text="Submit" name_placeholder="Enter your name" email_placeholder="Enter email address" phone_placeholder="Enter phone number" message_placeholder="Type your message" country_placeholder="Country/Region" address_placeholder="Street Address" city_placeholder="Town/City" state_placeholder="State" zip_placeholder="Postal Code" gdpr_label="By using this form you agree with the terms and conditions of this website." price_details="true" group_price="true" total_price="true" extra_class=""]
+
+
+/**
+ * Configurator Price
+ *
+ * @param  [id] Configurator ID.
+ * @param  [total_price] { true | false } Display price details.
+ * @param  [extra_class] Additional class for the element wrapper.
+ */
+
+[wpc_config_price id="" dynamic="false" total_price="true" extra_class=""]
