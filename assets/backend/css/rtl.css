@@ -1,0 +1,282 @@
+/**
+ * Admin RTL CSS.
+ *
+ * @package  wp-configurator-pro/assets/backend/css/
+ * @since  2.4.2
+ * @version  2.4.2
+ */
+
+.rtl #wpc-settings-panel .choose-image .title {
+    float: right;
+    margin-right: 0;
+    margin-left: 20px;
+}
+
+.rtl .desc-tooltip {
+    float: left;
+}
+
+.rtl .wpc-col-1 {
+    margin-right: 0;
+    margin-left: 70px;
+}
+
+.rtl .view-list .view-list-title .btn-group a {
+    margin-left: 0;
+    margin-right: 15px;
+}
+
+.rtl #wpc-settings-panel .layers-container .title {
+    float: right;
+    margin-left: 10px;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 40px;
+}
+
+.rtl #wpc-settings-panel .layers-con > div {
+    float: right;
+    border-right: none;
+    border-left: 1px solid #e6e6e6;
+}
+
+.rtl #wpc-settings-panel .layers-container .icon-bg {
+    float: right;
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+.rtl #wpc-settings-panel .layers-container .icon-bg:last-child {
+    margin-left: 0;
+}
+
+.rtl #wpc-settings-panel .layers-con .choose-img {
+    float: right;
+    border-right: none;
+    border-left: 1px solid #e6e6e6;
+}
+
+.rtl #wpc-settings-panel .layers-con .choose-img .add-hotspot {
+    float: right;
+}
+
+.rtl #wpc-settings-panel .layers-con .choose-img select {
+    float: right;
+    margin-right: 0;
+    margin-left: 20px;
+}
+
+.rtl #size-groups {
+    float: right;
+    border-right: none;
+    border-left: 1px solid #e6e6e6;
+}
+
+.rtl #wpc-settings-panel .layers-con #align-groups .align-left-right,
+.rtl #wpc-settings-panel .layers-con #size-groups .position-size {
+    float: right;
+    margin-right: 0;
+    margin-left: 20px;
+    display: flex;
+}
+
+.rtl #wpc-settings-panel .layers-con #align-groups .align-top-bottom,
+.rtl #wpc-settings-panel .layers-con #size-groups .size-position {
+    float: right;
+    display: flex;
+}
+
+.rtl #wpc-settings-panel .layers-con #size-groups label {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+.rtl #wpc-settings-panel .layers-con #size-groups label:last-child {
+    margin-left: 0;
+}
+
+.rtl #wpc-settings-panel .layers-con #size-groups input {
+    margin-right: 10px;
+    margin-left: 0;
+}
+
+.rtl #align-groups {
+    float: right;
+    padding-left: 40px;
+    padding-right: 20px;
+}
+
+.rtl .tool-tips {
+    left: auto;
+    right: -27px;
+}
+
+.rtl .add-hotspot .icon-bg .tool-tips {
+    right: -48px;
+    left: auto;
+}
+
+.rtl #wpc-settings-panel .layers-con>div:last-child {
+    border-left: none;
+}
+
+.rtl #wpc-settings-panel .layers-con>div#transform-groups {
+    float: left;
+}
+
+/* Controls */
+.rtl #wpc-settings-inner {
+    float: right;
+}
+
+.rtl .wpc-layer-controls,
+.rtl .wpc-layer-name,
+.rtl .wpc-layer-add-remove {
+    float: right;
+}
+
+.rtl .wpc-layer-add-remove {
+    float: left;
+}
+
+.rtl .wpc-form-field.wpc-form-name {
+    float: right;
+}
+
+.rtl .wpc-form-field.wpc-form-add-remove {
+    right: auto;
+    left: 0;
+}
+
+.rtl .wpc-form-field.angle-down-icon,
+.rtl .wpc-form-field.trash-icon,
+.rtl .wpc-form-field.add-icon {
+    float: right;
+}
+
+.rtl .wpc-form-name .wpc-name-icon {
+    right: 10px;
+    left: auto;
+}
+
+.rtl .wpc-settings-group .wpc-control-inner {
+    float: right;
+}
+
+.rtl .wpc-settings-sub-group .wpc-form-field.wpc-form-name {
+    border-left: none;
+    border-right: 8px solid #efedf0;
+}
+
+.rtl .wpc-settings-sub-value-group .wpc-form-field.wpc-form-name {
+    border-left: none;
+    border-right: 16px solid #efedf0;
+}
+
+.rtl .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-form-field.wpc-form-name {
+    border-left: none;
+    border-right: 24px solid #efedf0;
+}
+
+.rtl .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-form-field.wpc-form-name {
+    border-left: none;
+    border-right: 32px solid #efedf0;
+}
+
+.rtl .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-form-field.wpc-form-name {
+    border-left: none;
+    border-right: 40px solid #efedf0;
+}
+
+.rtl .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-form-field.wpc-form-name {
+    border-left: none;
+    border-right: 48px solid #efedf0;
+}
+
+.rtl .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-form-field.wpc-form-name {
+    border-left: none;
+    border-right: 56px solid #efedf0;
+}
+
+.rtl .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-form-field.wpc-form-name {
+    border-left: none;
+    border-right: 64px solid #efedf0;
+}
+
+.rtl .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-form-field.wpc-form-name {
+    border-left: none;
+    border-right: 72px solid #efedf0;
+}
+
+.rtl .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-form-field.wpc-form-name {
+    border-left: none;
+    border-right: 80px solid #efedf0;
+}
+
+.rtl .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-form-field.wpc-form-name {
+    border-left: none;
+    border-right: 88px solid #efedf0;
+}
+
+.rtl .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-form-field.wpc-form-name {
+    border-left: none;
+    border-right: 96px solid #efedf0;
+}
+
+.rtl .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-settings-sub-value-group .wpc-form-field.wpc-form-name {
+    border-left: none;
+    border-right: 104px solid #efedf0;
+}
+
+.rtl .add-btn,
+.rtl .add-btn:hover,
+.rtl .add-btn:focus {
+    margin-right: 0;
+    margin-left: 15px;
+}
+
+.rtl .add-btn i {
+    margin-right: 0;
+    margin-left: 2px;
+}
+
+.rtl #wpc-save-btn {
+    right: auto;
+    left: 70px;
+}
+
+.rtl #wpc-layer-options .options-set-1>div {
+    margin-right: 0;
+    margin-left: 60px;
+}
+
+.rtl #wpc-controls-basic-options>div {
+    float: right;
+    margin-right: 0;
+    margin-left: 100px;
+}
+
+.rtl #wpc-layer-options #wpc-layer-field-image .choose-icon {
+    margin-right: 0;
+    margin-left: 20px;
+}
+
+.rtl #wpc-layer-options .options-set .group {
+    float: right;
+}
+
+.rtl #wpc-layer-options .options-set select {
+    background-position: left 5px top 55%;
+}
+
+.rtl #wpc-layer-options .options-set-2 .group .price input {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+.rtl #wpc-layer-options .checkbox input {
+    margin-right: 0;
+    margin-left: 10px;
+    padding-left: 0 !important;
+    padding-right: 3px !important;
+}

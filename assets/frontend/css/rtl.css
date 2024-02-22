@@ -1,0 +1,70 @@
+/**
+ * Frontend RTL CSS.
+ *
+ * @package  wp-configurator-pro/assets/frontend/css/
+ * @since  2.4.2
+ * @version  3.5
+ */
+
+.rtl ul {
+    padding: 0;
+}
+
+.rtl .wpc-configurator-wrap.accordion .wpc-preview-parent-wrap {
+    float: right;
+}
+
+.rtl .wpc-carousel .wpc-carousel-item {
+    float: right;
+}
+
+.rtl .wpc-configurator-wrap.accordion .wpc-summary {
+    float: left;
+}
+
+.rtl .wpc-configurator-view .wpc-carousel-nav .wpc-carousel-prev,
+.rtl .wpc-configurator-view .wpc-carousel-nav .wpc-carousel-next {
+    float: right;
+    left: auto;
+    right: 40px;
+    transform: rotate(180deg);
+}
+
+.rtl .wpc-configurator-view .wpc-carousel-nav .wpc-carousel-next {
+    left: 40px;
+    right: auto;
+}
+
+.rtl .wpc-increament-qty,
+.rtl .wpc-decreament-qty {
+    left: auto;
+    right: 50px;
+}
+
+.rtl .wpc-main-controls {
+    float: left;
+}
+
+.rtl .wpc-summary-lists-wrap {
+    padding-right: 0;
+    padding-left: 80px;
+}
+
+.rtl .wpc-popup-inner .cart button {
+    float: right;
+}
+
+.rtl .wpc-summary-lists-wrap .wpc-summary-title,
+.rtl .wpc-popup-inner .wpc-form-title {
+    text-align: right;
+}
+
+.rtl .wpc-summary-list>ul {
+    padding-bottom: 9px;
+}
+
+/* Summary */
+.rtl .wpc-summary-list-child-wrap {
+    padding-right: 0;
+    padding-left: 10px;
+}
