@@ -1,0 +1,20 @@
+{
+  "name": "web-configurator",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.47",
+    "vuex": "^4.0.2",
+    "html2canvas": "^1.4.1",
+    "axios": "^1.3.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "vite": "^4.1.4"
+  }
+}
