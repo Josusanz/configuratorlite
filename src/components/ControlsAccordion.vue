@@ -55,17 +55,58 @@
                     +{{ formatPrice(layer.price) }}
                   </span>
                 </div>
+                
+                <div class="control-tooltip">
+                  <div class="tooltip-content">
+                    <h4>{{ layer.name }}</h4>
+                    <p v-if="layer.description">{{ layer.description }}</p>
+                    <p v-if="layer.price > 0" class="tooltip-price">
+                      Price: {{ formatPrice(layer.price) }}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </transition>
       </div>
     </div>
+    
+    <div class="selected-options">
+      <h4>Selected Options</h4>
+      <div v-if="activeLayers.length === 0" class="no-selections">
+        No options selected yet. Start customizing your product above.
+      </div>
+      <ul v-else class="selected-options-list">
+        <li 
+          v-for="layerId in activeLayers" 
+          :key="layerId"
+          class="selected-option"
+        >
+          <div class="selected-option-info">
+            <span class="selected-option-category">{{ getLayerCategoryName(layerId) }}</span>
+            <span class="selected-option-name">{{ getLayerName(layerId) }}</span>
+          </div>
+          <div class="selected-option-actions">
+            <span v-if="getLayerPrice(layerId) > 0" class="selected-option-price">
+              {{ formatPrice(getLayerPrice(layerId)) }}
+            </span>
+            <button 
+              class="selected-option-remove"
+              @click.stop="removeLayer(layerId)"
+              title="Remove option"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
-import { ref, computed } from 'vue'
+import { ref, computed } from 'vue';
 
 export default {
   props: {
@@ -83,52 +124,81 @@ export default {
   
   setup(props, { emit }) {
     // State
-    const activeCategories = ref([])
+    const activeCategories = ref([]);
     
     // If there are categories, open the first one by default
     if (props.product.categories && props.product.categories.length > 0) {
-      activeCategories.value = [props.product.categories[0].id]
+      activeCategories.value = [props.product.categories[0].id];
     }
     
     // Methods
     const toggleCategory = (categoryId) => {
-      const index = activeCategories.value.indexOf(categoryId)
+      const index = activeCategories.value.indexOf(categoryId);
       if (index === -1) {
-        activeCategories.value.push(categoryId)
+        activeCategories.value.push(categoryId);
       } else {
-        activeCategories.value.splice(index, 1)
+        activeCategories.value.splice(index, 1);
       }
-    }
+    };
     
     const toggleLayer = (layerId) => {
-      emit('toggle-layer', layerId)
-    }
+      emit('toggle-layer', layerId);
+    };
+    
+    const removeLayer = (layerId) => {
+      // If the layer is active, toggle it off
+      if (isLayerActive(layerId)) {
+        toggleLayer(layerId);
+      }
+    };
     
     const isLayerActive = (layerId) => {
-      return props.activeLayers.includes(layerId)
-    }
+      return props.activeLayers.includes(layerId);
+    };
     
     const getCategoryLayers = (categoryId) => {
-      return props.product.layers.filter(layer => layer.categoryId === categoryId)
-    }
+      return props.product.layers.filter(layer => layer.categoryId === categoryId);
+    };
+    
+    const getLayerName = (layerId) => {
+      const layer = props.product.layers.find(l => l.id === layerId);
+      return layer ? layer.name : '';
+    };
+    
+    const getLayerPrice = (layerId) => {
+      const layer = props.product.layers.find(l => l.id === layerId);
+      return layer ? layer.price || 0 : 0;
+    };
+    
+    const getLayerCategoryName = (layerId) => {
+      const layer = props.product.layers.find(l => l.id === layerId);
+      if (!layer) return '';
+      
+      const category = props.product.categories.find(c => c.id === layer.categoryId);
+      return category ? category.name : '';
+    };
     
     const formatPrice = (price) => {
       return new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD'
-      }).format(price)
-    }
+      }).format(price);
+    };
     
     return {
       activeCategories,
       toggleCategory,
       toggleLayer,
+      removeLayer,
       isLayerActive,
       getCategoryLayers,
+      getLayerName,
+      getLayerPrice,
+      getLayerCategoryName,
       formatPrice
-    }
+    };
   }
-}
+};
 </script>
 
 <style scoped>
@@ -153,6 +223,7 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .accordion-item {
@@ -212,6 +283,7 @@ export default {
   align-items: center;
   cursor: pointer;
   transition: transform 0.2s ease;
+  position: relative;
 }
 
 .control-item:hover {
@@ -277,6 +349,144 @@ export default {
   font-size: 0.75rem;
   font-weight: 600;
   color: #0ea5e9;
+}
+
+/* Tooltip */
+.control-tooltip {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 0.75rem;
+  width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.control-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px 8px 0;
+  border-style: solid;
+  border-color: white transparent transparent;
+}
+
+.control-item:hover .control-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(calc(-100% - 10px));
+}
+
+.tooltip-content h4 {
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
+  color: #1e293b;
+}
+
+.tooltip-content p {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.tooltip-content p:last-child {
+  margin-bottom: 0;
+}
+
+.tooltip-price {
+  font-weight: 600;
+  color: #0ea5e9;
+}
+
+/* Selected Options */
+.selected-options {
+  background-color: #f8fafc;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.selected-options h4 {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  color: #334155;
+}
+
+.no-selections {
+  color: #64748b;
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+.selected-options-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.selected-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.selected-option-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.selected-option-category {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-bottom: 0.25rem;
+}
+
+.selected-option-name {
+  font-weight: 600;
+  color: #334155;
+}
+
+.selected-option-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.selected-option-price {
+  font-weight: 600;
+  color: #0ea5e9;
+}
+
+.selected-option-remove {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.selected-option-remove:hover {
+  background-color: #fee2e2;
 }
 
 /* Animations */

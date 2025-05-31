@@ -38,6 +38,22 @@
         <span class="total-label">Total Price</span>
         <span class="total-price">{{ formatPrice(totalPrice) }}</span>
       </div>
+      
+      <div class="summary-actions">
+        <button 
+          class="btn btn-secondary"
+          @click="$emit('back')"
+        >
+          Back to Configure
+        </button>
+        
+        <button 
+          class="btn btn-primary"
+          @click="$emit('proceed')"
+        >
+          Proceed to Quote
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -59,19 +75,21 @@ export default {
     }
   },
   
+  emits: ['back', 'proceed'],
+  
   setup() {
     const formatPrice = (price) => {
       return new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD'
-      }).format(price)
-    }
+      }).format(price);
+    };
     
     return {
       formatPrice
-    }
+    };
   }
-}
+};
 </script>
 
 <style scoped>
@@ -180,5 +198,11 @@ export default {
 .total-price {
   font-size: 1.25rem;
   color: #2563eb;
+}
+
+.summary-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
 }
 </style>

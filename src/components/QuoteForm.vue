@@ -70,6 +70,9 @@
       </div>
       
       <div class="form-actions">
+        <button type="button" class="btn btn-secondary" @click="$emit('back')">
+          Back to Summary
+        </button>
         <button type="submit" class="btn btn-primary btn-submit" :disabled="isSubmitting">
           <span v-if="isSubmitting" class="spinner"></span>
           <span>{{ isSubmitting ? 'Submitting...' : 'Submit Quote Request' }}</span>
@@ -80,7 +83,7 @@
 </template>
 
 <script>
-import { reactive, ref, watch } from 'vue'
+import { reactive, ref, watch } from 'vue';
 
 export default {
   props: {
@@ -90,7 +93,7 @@ export default {
     }
   },
   
-  emits: ['update-field', 'submit'],
+  emits: ['update-field', 'submit', 'back'],
   
   setup(props, { emit }) {
     // Form data
@@ -100,85 +103,85 @@ export default {
       phone: props.userInfo.phone || '',
       message: props.userInfo.message || '',
       gdpr: false
-    })
+    });
     
     // Form state
-    const errors = reactive({})
-    const isSubmitting = ref(false)
+    const errors = reactive({});
+    const isSubmitting = ref(false);
     
     // Watch for changes in form data
     watch(formData, (newValue, oldValue) => {
       // Find which field changed
       for (const key in newValue) {
         if (newValue[key] !== oldValue[key]) {
-          emit('update-field', { field: key, value: newValue[key] })
+          emit('update-field', { field: key, value: newValue[key] });
           
           // Clear error when field is updated
           if (errors[key]) {
-            errors[key] = ''
+            errors[key] = '';
           }
         }
       }
-    })
+    });
     
     // Form validation
     const validateForm = () => {
-      const newErrors = {}
+      const newErrors = {};
       
       if (!formData.name.trim()) {
-        newErrors.name = 'Name is required'
+        newErrors.name = 'Name is required';
       }
       
       if (!formData.email.trim()) {
-        newErrors.email = 'Email is required'
+        newErrors.email = 'Email is required';
       } else if (!isValidEmail(formData.email)) {
-        newErrors.email = 'Please enter a valid email address'
+        newErrors.email = 'Please enter a valid email address';
       }
       
       if (formData.phone && !isValidPhone(formData.phone)) {
-        newErrors.phone = 'Please enter a valid phone number'
+        newErrors.phone = 'Please enter a valid phone number';
       }
       
       if (!formData.gdpr) {
-        newErrors.gdpr = 'You must agree to the terms and conditions'
+        newErrors.gdpr = 'You must agree to the terms and conditions';
       }
       
       // Copy validation errors
       for (const key in newErrors) {
-        errors[key] = newErrors[key]
+        errors[key] = newErrors[key];
       }
       
-      return Object.keys(newErrors).length === 0
-    }
+      return Object.keys(newErrors).length === 0;
+    };
     
     const isValidEmail = (email) => {
-      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      return re.test(String(email).toLowerCase())
-    }
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    };
     
     const isValidPhone = (phone) => {
-      const re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/
-      return re.test(String(phone))
-    }
+      const re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+      return re.test(String(phone));
+    };
     
     // Submit handler
     const submitForm = () => {
-      if (!validateForm()) return
+      if (!validateForm()) return;
       
-      isSubmitting.value = true
+      isSubmitting.value = true;
       
       // Emit submit event with form data
-      emit('submit')
-    }
+      emit('submit');
+    };
     
     return {
       formData,
       errors,
       isSubmitting,
       submitForm
-    }
+    };
   }
-}
+};
 </script>
 
 <style scoped>
@@ -272,11 +275,12 @@ input[type="checkbox"] {
 }
 
 .form-actions {
+  display: flex;
+  justify-content: space-between;
   margin-top: 1rem;
 }
 
 .btn-submit {
-  width: 100%;
   padding: 0.75rem 1.5rem;
   display: flex;
   justify-content: center;

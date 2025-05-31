@@ -122,6 +122,13 @@ a {
 }
 
 /* Layout */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
 .configurator-app {
   min-height: 100vh;
   display: flex;
@@ -219,4 +226,3 @@ a {
   opacity: 0;
   transform: translateX(-20px);
 }
-</style>
